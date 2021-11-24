@@ -189,16 +189,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:text="다른 상품임"
+            android:text="상품이 다릅니다"
             android:id="@+id/btnWrong"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:text="취소"
-            android:id="@+id/btnNo"
             />
     </LinearLayout>
 </RelativeLayout>

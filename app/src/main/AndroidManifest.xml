@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Barcode_Scanner">
-        <activity android:name=".ScanActivity"
-            android:label="ScanActivity"></activity>
         <activity android:name=".GoodsInfoActivity"
             android:label="GoodsActivity"></activity>
         <activity android:name=".MainActivity"
