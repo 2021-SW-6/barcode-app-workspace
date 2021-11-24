@@ -20,33 +20,6 @@ public class GoodsInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         Button btnWrong = findViewById(R.id.btnWrong);
-        Button btnNo = findViewById(R.id.btnNo);
-
-        btnNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View dialogView = View.inflate(GoodsInfoActivity.this, R.layout.dialog_doadditionalscan, null);
-                AlertDialog.Builder dlg = new AlertDialog.Builder(GoodsInfoActivity.this);
-
-                dlg.setTitle("추가 검색을 원하십니까?");
-                dlg.setView(dialogView);
-                dlg.setNeutralButton("취소", null);
-                dlg.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent i_main = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i_main);
-                    }
-                });
-                dlg.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                });
-                dlg.show();
-            }
-        });
 
         btnWrong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +30,6 @@ public class GoodsInfoActivity extends AppCompatActivity {
                 dlg.setTitle("기대하신 상품이 아닙니까?");
                 dlg.setView(dialogView);
                 dlg.setNeutralButton("오류보고", null);
-                dlg.setPositiveButton("재촬영", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                });
                 dlg.show();
             }
         });
