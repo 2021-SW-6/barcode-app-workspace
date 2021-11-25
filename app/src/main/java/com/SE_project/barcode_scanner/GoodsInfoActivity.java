@@ -26,9 +26,9 @@ public class GoodsInfoActivity extends AppCompatActivity {
         tv_barcode_number = findViewById(R.id.barcodeNumber);
         tv_barcode_number.setText(barcodeNumber);
 
-        Button btn_wrong = findViewById(R.id.btnWrong);
+        Button btnWrong = findViewById(R.id.btnWrong);
 
-        btn_wrong.setOnClickListener(new View.OnClickListener() {
+        btnWrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 View dialogView = View.inflate(GoodsInfoActivity.this, R.layout.dialog_wronggoods, null);
