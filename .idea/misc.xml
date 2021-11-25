@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/activity_goodsinfo.xml" value="0.1" />
+        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/dialog_doadditionalscan.xml" value="0.1" />
+        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/dialog_wronggoods.xml" value="0.1" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_goodsinfo.xml" value="0.33" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_scan.xml" value="0.36614583333333334" />

@@ -35,8 +35,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:text="인식성공"
-                android:id="@+id/btnSuccess"
+                android:text="인식시작"
+                android:id="@+id/btnScan"
                 />
             <Button
                 android:layout_width="0dp"
