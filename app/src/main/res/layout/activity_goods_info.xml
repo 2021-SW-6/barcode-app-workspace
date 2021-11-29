@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="0dp"
+        android:layout_weight="5"
         android:id="@+id/svInfo">
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,158 +42,154 @@
                 />
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:id="@+id/layout1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/svInfo"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="가격"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="구매 페이지"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1500원"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="https://www.asfasda"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout2"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1550원"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="https://www.asczxa"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout3"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1550원"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="https://www.asczxa"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout4"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1550원"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="https://www.asczxa"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout5"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1550원"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="https://www.asczxa"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:id="@+id/layoutBtn"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         >
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:text="상품이 다릅니다"
-            android:id="@+id/btnWrong"
-            />
-    </LinearLayout>
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/svInfo"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="가격"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="구매 페이지"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="1500원"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="https://www.asfasda"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout2"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="1550원"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="https://www.asczxa"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout3"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="1550원"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="https://www.asczxa"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout4"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="1550원"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="https://www.asczxa"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout5"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="1550원"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    android:text="https://www.asczxa"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

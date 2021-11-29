@@ -25,20 +25,5 @@ public class GoodsInfoActivity extends AppCompatActivity {
         tv_barcode_number = findViewById(R.id.barcodeNumber);
         tv_barcode_number.setText(barcodeNumber);
 
-        Button btnWrong = findViewById(R.id.btnWrong);
-
-        btnWrong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View dialogView = View.inflate(GoodsInfoActivity.this, R.layout.dialog_wrong_goods, null);
-                AlertDialog.Builder dlg = new AlertDialog.Builder(GoodsInfoActivity.this);
-
-                dlg.setTitle("기대하신 상품이 아닙니까?");
-                dlg.setView(dialogView);
-                dlg.setNeutralButton("오류보고", null);
-                dlg.show();
-            }
-        });
-
     }
 }
