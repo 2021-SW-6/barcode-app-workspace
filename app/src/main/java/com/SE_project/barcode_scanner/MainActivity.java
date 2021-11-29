@@ -78,10 +78,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-            /*else {
-                Toast.makeText(this,"아무것도 인식하지 못했습니다",Toast.LENGTH_SHORT).show();
-
-            }*/
         }
         else {
             super.onActivityResult(requestCode,resultCode,data);
