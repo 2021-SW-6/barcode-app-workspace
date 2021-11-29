@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,25 +23,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setTitle("바코드 스캐너");
 
-        Button btnScan = findViewById(R.id.btnScan);
-        Button failScan = findViewById(R.id.btnFail);   //단순히 예시버튼일뿐임.의미x
-        btnScan.setOnClickListener(this);
-
-        failScan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "인식 실패", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
+
+        ivCamera.setOnClickListener(this);
         ivGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(""))
             }
         });
-
     }
 
     @Override
@@ -72,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         startActivity(intent);
                     }
                 });
-                builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         scanCode();
@@ -86,10 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-            else {
-                Toast.makeText(this,"No Results",Toast.LENGTH_LONG).show();
+            /*else {
+                Toast.makeText(this,"아무것도 인식하지 못했습니다",Toast.LENGTH_SHORT).show();
 
-            }
+            }*/
         }
         else {
             super.onActivityResult(requestCode,resultCode,data);
