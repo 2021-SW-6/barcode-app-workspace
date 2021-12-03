@@ -1,14 +1,11 @@
 package com.SE_project.barcode_scanner;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.os.PersistableBundle;
+import android.os.StrictMode;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
@@ -17,33 +14,26 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class GoodsInfoActivity extends AppCompatActivity {
-    TextView tv_barcode_number; //인식한 내용 출력되는 것 확인
-    TextView tv_product_name;   //상품명 나중에 정보읽어와서 넣어주어야하는부분
-    TextView tv_lowest_price;   //최저가 나중에 정보읽어와서 넣어주어야하는부분
+public class NaverApiActivity extends AppCompatActivity {
     NaverApiHelper naver_api_helper;
     public static StringBuilder sb; //
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goods_info);
-        setTitle("상품 정보");
-
-        Intent intent = getIntent();
-        String barcodeNumber = intent.getStringExtra("barcodeNumber");
-        tv_barcode_number = findViewById(R.id.barcodeNumber);
-        tv_barcode_number.setText(barcodeNumber);
+        setContentView(R.layout.naver_api_test);
+        System.out.println("NaverApiActivity 테스트");
+        Log.d("request: ","NaverApiActivity 테스트");
         naver_api_helper = new NaverApiHelper();
-        System.out.println("Goods Info 테스트");
-        Log.v("GoodsInfoAcitivt: " ,"test");
+        System.out.println("Url 기져오기" + naver_api_helper.getBasicUrl());
         try {
             System.out.println("try안");
             String productName = URLEncoder.encode("롯데 빠다코코낫 78G", "utf-8");
             String apiURL = naver_api_helper.getBasicUrl() +
-                            naver_api_helper.getQuery() + productName +
-                            naver_api_helper.getDisplay() +
-                            naver_api_helper.getStart() +
-                            naver_api_helper.getSort();
+                    naver_api_helper.getQuery() + productName +
+                    naver_api_helper.getDisplay() +
+                    naver_api_helper.getStart() +
+                    naver_api_helper.getSort();
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitNetwork().build());
 
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -71,4 +61,5 @@ public class GoodsInfoActivity extends AppCompatActivity {
             System.out.println(e);
         }
     }
+
 }
