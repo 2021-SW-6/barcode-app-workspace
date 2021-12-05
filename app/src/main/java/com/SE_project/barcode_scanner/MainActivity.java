@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
-        ivCamera.setOnClickListener(this);
+        ivCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scanCode();
+            }
+        });
         ivGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,18 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnApiTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("클릭테스트");
-                Log.v("MainAcitivty: " ,"Click test");
                 Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    public void onClick(View view) {
-        scanCode();
-    }
     private void scanCode() {
         IntentIntegrator integrator = new IntentIntegrator (this);
         integrator.setCaptureActivity(CaptureAct.class);

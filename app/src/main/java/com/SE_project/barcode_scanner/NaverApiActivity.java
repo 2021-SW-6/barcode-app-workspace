@@ -16,7 +16,7 @@ import java.net.URLEncoder;
 
 public class NaverApiActivity extends AppCompatActivity {
     NaverApiHelper naver_api_helper;
-    public static StringBuilder sb; //
+    public static StringBuilder strBuilder; //
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +47,16 @@ public class NaverApiActivity extends AppCompatActivity {
             } else {
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
-            sb = new StringBuilder();
+            strBuilder = new StringBuilder();
             String line;
 
             while ((line = br.readLine()) != null) {
-                sb.append(line + "\n");
+                strBuilder.append(line + "\n");
                 Log.d("request: ",line);
             }
             br.close();
             con.disconnect();
-            System.out.println(sb);
+            System.out.println(strBuilder);
         } catch (Exception e) {
             System.out.println(e);
         }
