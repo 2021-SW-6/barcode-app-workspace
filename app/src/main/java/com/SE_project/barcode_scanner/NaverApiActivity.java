@@ -8,6 +8,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -57,6 +61,24 @@ public class NaverApiActivity extends AppCompatActivity {
             br.close();
             con.disconnect();
             System.out.println(strBuilder);
+
+            JSONObject jsonObject = new JSONObject(strBuilder.toString());
+            JSONArray getArray = (JSONArray) jsonObject.get("items");
+            for (int i = 0; i < getArray.length(); i++) {
+                JSONObject object = (JSONObject) getArray.get(i);
+
+                String getTitle = (String) object.get("title");
+                String getPrice = (String) object.get("lprice");
+                String getLink = (String) object.get("link");
+
+                String titleFilter = getTitle.replaceAll("<b>", "");
+                String title = titleFilter.replaceAll("</b>", "");
+
+
+                Log.v("test", title);
+                Log.v("test", getPrice);
+                Log.v("test", getLink);
+            }
         } catch (Exception e) {
             System.out.println(e);
         }

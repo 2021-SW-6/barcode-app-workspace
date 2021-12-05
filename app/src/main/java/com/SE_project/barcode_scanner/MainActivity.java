@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult (int requestCode , int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode , resultCode , data);
+        Log.v("onActivityResult: " ,Integer.toString(requestCode));
         if(result != null) {
             if(result.getContents() != null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

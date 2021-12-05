@@ -13,5 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-app/src/main/java/com/SE_project/barcode_scanner/GitIgnoreTest.java
-app/src/main/java/com/SE_project/barcode_scanner/NaverShoppingApiToken.java
