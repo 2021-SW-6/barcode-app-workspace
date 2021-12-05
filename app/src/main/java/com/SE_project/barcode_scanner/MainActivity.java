@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
@@ -28,7 +27,7 @@ import com.google.zxing.integration.android.IntentResult;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private final int CAMERA_SCAN = 49374;
 
@@ -37,11 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("바코드 스캐너");
-
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
-        ivCamera.setOnClickListener(this);
+        ivCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scanCode();
+            }
+        });
         ivGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,12 +53,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(pickIntent, GET_GALLERY_IMAGE);
             }
         });
+        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);
+        btnApiTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    public void onClick(View view) {
-        scanCode();
-    }
     private void scanCode() {
         IntentIntegrator integrator = new IntentIntegrator (this);
         integrator.setCaptureActivity(CaptureAct.class);
