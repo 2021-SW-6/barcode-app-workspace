@@ -5,40 +5,47 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("바코드 스캐너");
-
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
-        ivCamera.setOnClickListener(this);
+        ivCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scanCode();
+            }
+        });
         ivGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(""))
             }
         });
+        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);
+        btnApiTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    public void onClick(View view) {
-        scanCode();
-    }
     private void scanCode() {
         IntentIntegrator integrator = new IntentIntegrator (this);
         integrator.setCaptureActivity(CaptureAct.class);
