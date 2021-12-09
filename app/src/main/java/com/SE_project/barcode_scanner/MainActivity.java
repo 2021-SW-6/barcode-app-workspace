@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 if (bitmap == null)
                 {
                     Log.e("TAG", "uri is not a bitmap," + uri.toString());
+                    Toast.makeText(getApplicationContext(), "잘못된 이미지입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 int width = bitmap.getWidth(), height = bitmap.getHeight();
@@ -144,11 +146,13 @@ public class MainActivity extends AppCompatActivity {
                 catch (NotFoundException e)
                 {
                     Log.e("TAG", "decode exception", e);
+                    Toast.makeText(getApplicationContext(), "바코드를 인식하지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
             catch (FileNotFoundException e)
             {
                 Log.e("TAG", "can not open file" + uri.toString(), e);
+                Toast.makeText(getApplicationContext(), "파일을 열 수 없습니다.", Toast.LENGTH_SHORT).show();
             }
         }
 
