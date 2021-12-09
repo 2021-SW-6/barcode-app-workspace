@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("TAG", "can not open file" + uri.toString(), e);
             }
         }
+
         //barcode_scan via camera
         else if(requestCode == CAMERA_SCAN){
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
