@@ -1,9 +1,20 @@
 package com.SE_project.barcode_scanner;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +40,9 @@ public class NaverApiActivity extends AppCompatActivity {
         Log.d("request: ","NaverApiActivity 테스트");
         naver_api_helper = new NaverApiHelper();
         System.out.println("Url 기져오기" + naver_api_helper.getBasicUrl());
+
+        JSONArray getArray;
+
         try {
             System.out.println("try안");
             String productName = URLEncoder.encode("롯데 빠다코코낫 78G", "utf-8");
@@ -56,32 +70,69 @@ public class NaverApiActivity extends AppCompatActivity {
 
             while ((line = br.readLine()) != null) {
                 strBuilder.append(line + "\n");
-                Log.d("request: ",line);
             }
             br.close();
             con.disconnect();
             System.out.println(strBuilder);
 
             JSONObject jsonObject = new JSONObject(strBuilder.toString());
-            JSONArray getArray = (JSONArray) jsonObject.get("items");
+            getArray = (JSONArray) jsonObject.get("items");
             for (int i = 0; i < getArray.length(); i++) {
                 JSONObject object = (JSONObject) getArray.get(i);
-
-                String getTitle = (String) object.get("title");
-                String getPrice = (String) object.get("lprice");
-                String getLink = (String) object.get("link");
-
-                String titleFilter = getTitle.replaceAll("<b>", "");
-                String title = titleFilter.replaceAll("</b>", "");
-
-
-                Log.v("test", title);
-                Log.v("test", getPrice);
-                Log.v("test", getLink);
+                addTableRow(object ,this);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        findViewById(R.id.URIButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void addTableRow(JSONObject jsonObject , Context context ) throws JSONException {
+        String getTitle = (String) jsonObject.get("title");
+        String getPrice = (String) jsonObject.get("lprice");
+        String getLink = (String) jsonObject.get("link");
+
+        String titleFilter = getTitle.replaceAll("<b>", "");
+        String title = titleFilter.replaceAll("</b>", "");
+
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.myTableLayout);
+
+        TableRow tableRow = new TableRow(context);
+        tableRow.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+        TextView tvName = new TextView(context);
+        tvName.setText(title);
+        tvName.setGravity(Gravity.CENTER);
+        tvName.setTextColor(Color.BLACK);
+        tableRow.addView(tvName);
+
+        TextView tvPrice = new TextView(context);
+        tvPrice.setText(getPrice);
+        tvPrice.setGravity(Gravity.CENTER);
+        tvPrice.setTextColor(Color.BLACK);
+        tableRow.addView(tvPrice);
+
+        Button btnLink = new Button(context);
+        btnLink.setText("이동");
+        btnLink.setGravity(Gravity.CENTER);
+        btnLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getLink));
+                startActivity(intent);
+            }
+        });
+        tableRow.addView(btnLink);
+        tableLayout.addView(tableRow);
     }
 
 }
