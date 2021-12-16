@@ -85,19 +85,13 @@ public class NaverApiActivity extends AppCompatActivity {
             System.out.println(e);
         }
 
-        findViewById(R.id.URIButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com"));
-                startActivity(intent);
-            }
-        });
     }
 
     public void addTableRow(JSONObject jsonObject , Context context ) throws JSONException {
         String getTitle = (String) jsonObject.get("title");
         String getPrice = (String) jsonObject.get("lprice");
         String getLink = (String) jsonObject.get("link");
+        String getMall = (String) jsonObject.get("mallName");
 
         String titleFilter = getTitle.replaceAll("<b>", "");
         String title = titleFilter.replaceAll("</b>", "");
@@ -124,6 +118,8 @@ public class NaverApiActivity extends AppCompatActivity {
         Button btnLink = new Button(context);
         btnLink.setText("이동");
         btnLink.setGravity(Gravity.CENTER);
+        btnLink.setWidth(5);
+        btnLink.setHeight(5);
         btnLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +128,7 @@ public class NaverApiActivity extends AppCompatActivity {
             }
         });
         tableRow.addView(btnLink);
+
         tableLayout.addView(tableRow);
     }
 
