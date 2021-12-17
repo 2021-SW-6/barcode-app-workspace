@@ -35,14 +35,14 @@ import java.util.List;
 
 public class NaverApiActivity extends AppCompatActivity {
     NaverApiHelper naver_api_helper;
-    public static StringBuilder strBuilder; //
+    public static StringBuilder strBuilder;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.naver_api_test);
         System.out.println("NaverApiActivity 테스트");
         Log.d("request: ","NaverApiActivity 테스트");
-        naver_api_helper = new NaverApiHelper();
+        naver_api_helper = NaverApiHelper.getInstance();
         System.out.println("Url 기져오기" + naver_api_helper.getBasicUrl());
         //sort parameter주면 상품명에 대한 정확도가 떨어지는 것 확인=>안드로이드단에서 정렬하도록 수정
         try {
