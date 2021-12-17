@@ -37,28 +37,35 @@ public class GoodsInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_info);
         setTitle("상품 정보");
-
+        Log.v("onCreate","onCreate func");
 
         Intent intent = getIntent();
         String barcodeNumber = intent.getStringExtra("barcodeNumber");
-        tvBarcodeNumber = findViewById(R.id.barcodeNumber);
+        tvBarcodeNumber = findViewById(R.id.tvBarcodeNumber);
         tvBarcodeNumber.setText(barcodeNumber);
-
+        String URL = "http://www.koreannet.or.kr/home/hpisSrchGtin.gs1?gtin=";
+        URL += barcodeNumber;
+        final String requestURL =  URL;
         new Thread() {
             @Override
             public void run() {
+                Log.v("Thread run() " , "Thread run함수안");
                 Bundle bundle = new Bundle();
                 boolean isEmpty;
                 try {
-                    Document doc = Jsoup.connect("http://www.koreannet.or.kr/home/hpisSrchGtin.gs1?gtin=8801062522064").get();
+                    Log.v("Try " , "try 구문시작");
+                    Document doc = Jsoup.connect(requestURL).get();
+                    Log.v("Document doc 아래", "Document doc 아래");
                     Elements prodInfo = doc.select(".productTit");
-
+                    Log.v("Elements prodInfo 아래", "Elements prodInfo 아래");
                     isEmpty = prodInfo.isEmpty(); //빼온 값 null체크
                     Log.d("Tag", "isNull? : " + isEmpty); //로그캣 출력
 
                     if(isEmpty == false) { //null값이 아니면 크롤링 실행
-                        String prodName = prodInfo.get(15).text().substring(0); //크롤링 하면 "현재온도30'c" 이런식으로 뽑아와지기 때문에, 현재온도를 잘라내고 30'c만 뽑아내는 코드
-                        bundle.putString("prodName", prodName); //bundle 이라는 자료형에 뽑아낸 결과값 담아서 main Thread로 보내기
+                        //String prodName = prodInfo.get(15).text().substring(0); //크롤링 하면 "현재온도30'c" 이런식으로 뽑아와지기 때문에, 현재온도를 잘라내고 30'c만 뽑아내는 코드
+                        bundle.putString("prodName", prodInfo.toString()); //prodName에 prodInfo.toString() 찍어줌=> 8801062522064 &nbsp;&nbsp;&nbsp;&nbsp; 롯데 빠다코코낫 78G
+                        Log.v("prodInfo.toString()" ,prodInfo.toString());
+
                     }
 
                 } catch (IOException e) {
