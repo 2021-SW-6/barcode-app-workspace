@@ -6,7 +6,7 @@ public class NaverApiHelper {
     protected String clientSecret;          //X-Naver-Client-Secret
     protected final static String basicUrl = "https://openapi.naver.com/v1/search/shop.json?";
     protected String query = "query=";      // 필수여부(Y)
-    protected String display = "&display=2"; // 필수여부(N) 기본값(10) 최대값(100)
+    protected String display = "&display=6"; // 필수여부(N) 기본값(10) 최대값(100)
     protected String start = "&start=1";     // 필수여부(N) 기본값(1) 최대값(1000)
     protected String sort = "&sort=asc";    // 필수여부(N) 기본값(sim) , date , asc , dsc
     protected String fullUrl;               //Get 방식으로 Request를 보낼 Url
