@@ -14,15 +14,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/barcodeNumber"
+                android:id="@+id/tvBarcodeNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
                 android:text="바코드 번호 : 8801062"
                 android:textSize="30sp"
-            />
+                />
             <TextView
+                android:id="@+id/tvProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
