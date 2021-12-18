@@ -33,11 +33,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-<<<<<<< HEAD
+
     implementation files('libs/jsoup-1.14.3.jar')
-=======
-    implementation files('libs\\jsoup-1.14.3.jar')
->>>>>>> c26b5cd92f9de0963d0981ca871e8e1d0a137834
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
