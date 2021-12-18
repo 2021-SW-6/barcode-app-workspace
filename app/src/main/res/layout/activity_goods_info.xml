@@ -14,21 +14,22 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/barcodeNumber"
+                android:id="@+id/tvBarcodeNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
-                android:text="바코드 번호 : 8801062"
+                android:text="바코드 번호 : "
                 android:textSize="30sp"
-            />
+                />
             <TextView
+                android:id="@+id/tvProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="상품명 : 빠다코코낫"
+                android:text="상품명 : "
                 android:textSize="30sp"
                 />
             <TextView
@@ -37,7 +38,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="최저가 : 1500원"
+                android:text="최저가 : "
                 android:textSize="30sp"
                 />
         </LinearLayout>
