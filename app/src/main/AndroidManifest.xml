@@ -13,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Barcode_Scanner">
+        android:theme="@style/Theme.Barcode_Scanner"
+        android:usesCleartextTraffic="true">
         <activity android:name=".GoodsInfoActivity"
             android:label="GoodsActivity"></activity>
         <activity android:name=".MainActivity"
@@ -31,5 +32,4 @@
         <activity android:name=".NaverApiActivity"
             android:label="NaverApiActivity"></activity>
     </application>
-
 </manifest>

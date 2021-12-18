@@ -17,7 +17,15 @@
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_doadditionalscan.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_wrong_goods.xml" value="0.213768115942029" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_wronggoods.xml" value="0.2957427536231884" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_goods_info.xml" value="0.32518115942028986" />
+=======
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver2/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.13269927536231885" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver2/barcode-app-workspace/app/src/main/res/layout/naver_api_test.xml" value="0.2046875" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/activity_goods_info.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/naver_api_test.xml" value="0.36614583333333334" />
+>>>>>>> c26b5cd92f9de0963d0981ca871e8e1d0a137834
       </map>
     </option>
   </component>
