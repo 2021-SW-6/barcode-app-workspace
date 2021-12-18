@@ -36,10 +36,27 @@ import java.util.List;
 public class NaverApiActivity extends AppCompatActivity {
     NaverApiHelper naver_api_helper;
     public static StringBuilder strBuilder;
+
+    TextView tvBarcodeNumber;
+    TextView tvProductName;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.naver_api_test);
+
+        tvBarcodeNumber = findViewById(R.id.tvBarcodeNumber);
+        tvProductName = findViewById(R.id.tvProductName);
+
+        Log.d("request: ","1 테스트");
+        Intent intent = getIntent();
+        String barcodeNumber = intent.getStringExtra("barcodeNumber");
+        String prodName = intent.getStringExtra("prodName");
+
+        Log.d("request: ","2 테스트");
+        tvBarcodeNumber.setText("바코드 번호 : " + barcodeNumber);
+        tvProductName.setText("상품명 : " + prodName);
+
         System.out.println("NaverApiActivity 테스트");
         Log.d("request: ","NaverApiActivity 테스트");
         naver_api_helper = NaverApiHelper.getInstance();
@@ -47,7 +64,7 @@ public class NaverApiActivity extends AppCompatActivity {
         //sort parameter주면 상품명에 대한 정확도가 떨어지는 것 확인=>안드로이드단에서 정렬하도록 수정
         try {
             System.out.println("try안");
-            String productName = URLEncoder.encode("롯데 빠다코코낫 78G", "utf-8");
+            String productName = URLEncoder.encode(prodName, "utf-8");
             String apiURL = naver_api_helper.getBasicUrl() +
                     naver_api_helper.getQuery() + productName +
                     naver_api_helper.getDisplay() +

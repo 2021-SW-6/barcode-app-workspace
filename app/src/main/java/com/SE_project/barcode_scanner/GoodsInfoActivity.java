@@ -5,44 +5,26 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.view.View;
-import android.widget.Button;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.app.AppCompatActivity;//
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 
 public class GoodsInfoActivity extends AppCompatActivity {
-    TextView tvBarcodeNumber; //인식한 내용 출력되는 것 확인
-    TextView tvProductName;   //상품명 나중에 정보읽어와서 넣어주어야하는부분
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goods_info);
-        setTitle("상품 정보");
-
-        tvBarcodeNumber = findViewById(R.id.tvBarcodeNumber);   //텍스트뷰 연결
-        tvProductName = findViewById(R.id.tvProductName);
 
         Intent intent = getIntent();
-        String barcodeNumber = intent.getStringExtra("barcodeNumber");  //MainActivity에서 barcodeNumber 전달받음
-        tvBarcodeNumber.setText("바코드 번호 : " + barcodeNumber);
+        final String barcodeNumber = intent.getStringExtra("barcodeNumber");  //MainActivity에서 barcodeNumber 전달받음
+
 
         String URL = "http://www.koreannet.or.kr/home/hpisSrchGtin.gs1?gtin=";
         URL += barcodeNumber;
@@ -53,7 +35,11 @@ public class GoodsInfoActivity extends AppCompatActivity {
             public void handleMessage(@NonNull Message msg) {
                 Bundle bundle = msg.getData();    //new Thread에서 상품정보가 담긴 bundle 추출
                 String prodName = bundle.getString("prodName");     // bundle에서 상품정보 추출
-                tvProductName.setText("상품명 : " + prodName);    //받아온 상품정보 textView에 출력
+
+                Intent intent = new Intent(getApplicationContext(),NaverApiActivity.class);
+                intent.putExtra("barcodeNumber",barcodeNumber); //넘겨줄 데이터
+                intent.putExtra("prodName",prodName); // 넘겨줄 데이터
+                startActivity(intent); //NaverApiActivity 실행
             };
         };
 
@@ -63,7 +49,6 @@ public class GoodsInfoActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();   //상품 정보를 담기 위한 bundle
                 String prodName;
                 boolean isEmpty;    //상품 정보를 잘 읽어왔는 지 확인하기 위한 플래그
-
                 try {
                     Document doc = Jsoup.connect(requestURL).get();  //크롤링할 주소의 html가져옴
                     Elements prodInfo = doc.select(".productTit");  //html에서 .productTit 클래스의 내용 선택 (바코드 번호 + 공백 + 상품 이름)
@@ -89,9 +74,7 @@ public class GoodsInfoActivity extends AppCompatActivity {
                                 finish();   //메인 액티비티로 복귀
                             }
                         });
-
                     }
-
                 } catch (IOException e) {       //예외 처리
                     e.printStackTrace();
                 }
@@ -99,3 +82,6 @@ public class GoodsInfoActivity extends AppCompatActivity {
         }.start();
     }
 }
+
+
+
