@@ -30,7 +30,7 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
-    private final int CAMERA_SCAN = 49374;
+    private final int CAMERA_SCAN = 49374;      //request code 설정
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +40,23 @@ public class MainActivity extends AppCompatActivity {
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
-        ivCamera.setOnClickListener(new View.OnClickListener() {
+        ivCamera.setOnClickListener(new View.OnClickListener() {    //카메라 이미지를 눌렀을 때 작동할 기능
             @Override
             public void onClick(View view) {
                 scanCode();
-            }
+            }   //카메라로 바코드 스캔
         });
-        ivGallery.setOnClickListener(new View.OnClickListener() {
+
+        ivGallery.setOnClickListener(new View.OnClickListener() {   //갤러리 이미지를 눌렀을 때 작동할 기능
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {        //갤러리에 있는 이미지에서 바코드 스캔
                 Intent pickIntent = new Intent(Intent.ACTION_PICK);
                 pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(pickIntent, GET_GALLERY_IMAGE);
             }
         });
-        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);
+
+        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);  //네이버 api를 테스트하기 위한 버튼
         btnApiTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     */
     private void scanCode() {
         IntentIntegrator integrator = new IntentIntegrator (this);
         integrator.setCaptureActivity(CaptureAct.class);

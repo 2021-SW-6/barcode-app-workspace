@@ -2,17 +2,25 @@ package com.SE_project.barcode_scanner;
 
 public class NaverApiHelper {
     NaverShoppingApiToken naver_api_token;  //NaverApi clientId,clientSecret key들을 불러오기위함
+    public static NaverApiHelper helper;
     protected String clientId;              //X-Naver-Client-Id
     protected String clientSecret;          //X-Naver-Client-Secret
     protected final static String basicUrl = "https://openapi.naver.com/v1/search/shop.json?";
     protected String query = "query=";      // 필수여부(Y)
-    protected String display = "&display=2"; // 필수여부(N) 기본값(10) 최대값(100)
+    protected String display = "&display=6"; // 필수여부(N) 기본값(10) 최대값(100)
     protected String start = "&start=1";     // 필수여부(N) 기본값(1) 최대값(1000)
     protected String sort = "&sort=asc";    // 필수여부(N) 기본값(sim) , date , asc , dsc
     protected String fullUrl;               //Get 방식으로 Request를 보낼 Url
 
+    //Design Pattern(Creational) : Singleton Pattern
+    public static NaverApiHelper getInstance() {
+        if(helper==null) {
+            helper = new NaverApiHelper();
+        }
+        return helper;
+    }
     NaverApiHelper() {
-        naver_api_token = new NaverShoppingApiToken();          //NaverApi Key들을 불러오기위한 생성자 생성
+        naver_api_token = NaverShoppingApiToken.getInstance();          //NaverApi Key들을 불러오기위한 생성자 생성
         this.clientId=naver_api_token.getClientId();            //Secret file인 NaverShoppingApiToken에서 key값을 가져와 API Key를 github에 가린다.
         this.clientSecret=naver_api_token.getClientSecret();    //Secret file인 NaverShoppingApiToken에서 key값을 가져와 API Key를 github에 가린다.
     }

@@ -3,12 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/activity_goods_info.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/activity_goodsinfo.xml" value="0.1" />
         <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/dialog_doadditionalscan.xml" value="0.1" />
         <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/dialog_wronggoods.xml" value="0.1" />
-        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/naver_api_test.xml" value="0.3796680497925311" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/Nogoon/Desktop/barcode_app/Barcode_Scanner/app/src/main/res/layout/naver_api_test.xml" value="0.21497584541062803" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/layout/activity_goods_info.xml" value="0.22239583333333332" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/layout/naver_api_test.xml" value="0.22" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/gblad/mb/barcode-app-workspace/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23854166666666668" />
+=======
+>>>>>>> c1145842f9ef8fac61bfd3650cf383d35eaa5d15
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_goodsinfo.xml" value="0.33" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/barcode-app-workspace/app/src/main/res/layout/activity_scan.xml" value="0.36614583333333334" />
@@ -19,12 +28,19 @@
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_doadditionalscan.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_wrong_goods.xml" value="0.213768115942029" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver1/barcode-app-workspace/app/src/main/res/layout/dialog_wronggoods.xml" value="0.2957427536231884" />
+<<<<<<< HEAD
+        <entry key="app/src/main/res/layout/activity_goods_info.xml" value="0.32518115942028986" />
+=======
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver2/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.13269927536231885" />
         <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver2/barcode-app-workspace/app/src/main/res/layout/naver_api_test.xml" value="0.2046875" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/activity_goods_info.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssiss/Desktop/barcode_scanner/ver_3/barcode-app-workspace/app/src/main/res/layout/naver_api_test.xml" value="0.36614583333333334" />
+>>>>>>> c26b5cd92f9de0963d0981ca871e8e1d0a137834
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
