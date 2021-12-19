@@ -81,22 +81,16 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("Scanning Result");
 
         builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {
-            /**
-             *여기 메소드 수정했습니다
-             */
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 GoodsInfoActivity goodsInfoActivity = new GoodsInfoActivity();
                 String prodName;
 
-                Log.d("testlog ","1 테스트");
                 prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);
-                Log.d("testlog","7 테스트");
+
                 Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
-                Log.d("testlog","8 테스트");
                 intent.putExtra("barcodeNumber", barcodeNumber);
                 intent.putExtra("prodName", prodName);
-                Log.d("testlog","9 테스트");
                 startActivity(intent);
             }
         });
