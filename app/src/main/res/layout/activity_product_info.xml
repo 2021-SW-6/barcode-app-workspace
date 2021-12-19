@@ -5,9 +5,9 @@
     android:orientation="vertical"
     >
     <LinearLayout
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/tvBarcodeNumber"
@@ -27,9 +27,9 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
@@ -37,31 +37,37 @@
             android:text="상품명 검색결과"
             android:layout_margin="10dp"
             android:textSize="20dp"
-            android:textColor="#FF0000">
+            android:textColor="#CC0000">
         </TextView>
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TableLayout
             android:stretchColumns="*"
             android:id="@+id/myTableLayout"
-            android:background="#AAFFAA"
+            android:background="#F5F5DC"
             android:layout_margin="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <TableRow
-                android:background="#00FFAA"
+                android:background="#F9E3BE"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="상품명"
-                    android:textColor="#0000FF"
+                    android:textColor="#3333CC"
+                    android:textSize="25sp"
                     android:gravity="center">
                 </TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="가격"
-                    android:textColor="#0000FF"
+                    android:text="상품"
+                    android:textColor="#3333CC"
+                    android:textSize="25sp"
                     android:gravity="center"
                     >
                 </TextView>
@@ -69,12 +75,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="링크"
-                    android:textColor="#0000FF"
+                    android:textColor="#3333CC"
+                    android:textSize="25sp"
                     android:gravity="center"
                     >
                 </TextView>
             </TableRow>
         </TableLayout>
+        </ScrollView>
     </LinearLayout>
-
 </LinearLayout>

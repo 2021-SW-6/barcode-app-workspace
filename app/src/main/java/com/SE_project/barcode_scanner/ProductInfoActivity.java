@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +31,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class NaverApiActivity extends AppCompatActivity {
+public class ProductInfoActivity extends AppCompatActivity {
     NaverApiHelper naver_api_helper;
     public static StringBuilder strBuilder;
 
@@ -43,7 +41,8 @@ public class NaverApiActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.naver_api_test);
+        setContentView(R.layout.activity_product_info);
+        setTitle("상품 조회");
 
         tvBarcodeNumber = findViewById(R.id.tvBarcodeNumber);
         tvProductName = findViewById(R.id.tvProductName);
@@ -173,8 +172,6 @@ public class NaverApiActivity extends AppCompatActivity {
         Button btnLink = new Button(context);       //쇼핑 링크 버튼 연결
         btnLink.setText("이동");
         btnLink.setGravity(Gravity.CENTER);
-        btnLink.setWidth(5);
-        btnLink.setHeight(5);
 
         btnLink.setOnClickListener(new View.OnClickListener() {     // 연결
             @Override
