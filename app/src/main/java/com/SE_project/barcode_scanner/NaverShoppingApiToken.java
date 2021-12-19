@@ -3,8 +3,8 @@ package com.SE_project.barcode_scanner;
 public class NaverShoppingApiToken {
 
     public static NaverShoppingApiToken token;
-    private static final String clientId = "_ZGdRzs3Ytj529osSyKB";      //"" 상태로 최초 push 후 .gitignore로 가림
-    private static final String clientSecret = "IRvpUI5ciR";  //"" 상태로 최초 push 후 .gitignore로 가림
+    private static final String clientId = "";      //"" 상태로 git update-index --assume-unchanged로 =>github에 push 되지않도록함
+    private static final String clientSecret = "";            //"" 상태로 git update-index --assume-unchanged => github에 push 되지않도록함
 
     //Design Pattern(Creational) : Singleton Pattern
     public static NaverShoppingApiToken getInstance() {
