@@ -55,15 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(pickIntent, GET_GALLERY_IMAGE);
             }
         });
-
-        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);  //네이버 api를 테스트하기 위한 버튼
-        btnApiTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void scanCode() {
