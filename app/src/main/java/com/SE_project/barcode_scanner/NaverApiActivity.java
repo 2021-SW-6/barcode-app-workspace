@@ -48,12 +48,10 @@ public class NaverApiActivity extends AppCompatActivity {
         tvBarcodeNumber = findViewById(R.id.tvBarcodeNumber);
         tvProductName = findViewById(R.id.tvProductName);
 
-        Log.d("request: ","1 테스트");
         Intent intent = getIntent();
         String barcodeNumber = intent.getStringExtra("barcodeNumber");
         String prodName = intent.getStringExtra("prodName");
 
-        Log.d("request: ","2 테스트");
         tvBarcodeNumber.setText("바코드 번호 : " + barcodeNumber);
         tvProductName.setText("상품명 : " + prodName);
 

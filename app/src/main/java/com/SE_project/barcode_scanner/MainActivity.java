@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     *
-     */
     private void scanCode() {
         IntentIntegrator integrator = new IntentIntegrator (this);
         integrator.setCaptureActivity(CaptureAct.class);
@@ -86,8 +83,14 @@ public class MainActivity extends AppCompatActivity {
         builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(getApplicationContext(), GoodsInfoActivity.class);
+                GoodsInfoActivity goodsInfoActivity = new GoodsInfoActivity();
+                String prodName;
+
+                prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);
+
+                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
                 intent.putExtra("barcodeNumber", barcodeNumber);
+                intent.putExtra("prodName", prodName);
                 startActivity(intent);
             }
         });
