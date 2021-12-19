@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;//
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.w3c.dom.Document;
+
 import java.io.IOException;
 
 public class GoodsInfoActivity extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class GoodsInfoActivity extends AppCompatActivity {
 
         String URL = "http://www.koreannet.or.kr/home/hpisSrchGtin.gs1?gtin=";
         URL += barcodeNumber;
-        final String requestURL =  URL;         //크롤링할 주소를 설정
+        final String requestURL = URL;         //크롤링할 주소를 설정
 
         final Handler handler = new Handler(Looper.getMainLooper()) {     //받아온 상품정보를 화면에 반영
             @Override
