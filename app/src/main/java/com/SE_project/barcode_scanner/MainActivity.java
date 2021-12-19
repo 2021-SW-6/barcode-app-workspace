@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "파일을 열 수 없습니다.", Toast.LENGTH_SHORT).show();
             }
         }
+
         //barcode_scan via camera
         else if(requestCode == CAMERA_SCAN){
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
