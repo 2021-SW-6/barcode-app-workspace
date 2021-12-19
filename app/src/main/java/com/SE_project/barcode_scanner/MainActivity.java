@@ -71,18 +71,22 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(barcodeNumber);
         builder.setTitle("Scanning Result");
 
-        builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {    //상품검색을 진행할지 다시 스캔할지 묻는 Dialog
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 GoodsInfoActivity goodsInfoActivity = new GoodsInfoActivity();
                 String prodName;
 
-                prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);
+                prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);   //바코드 번호로 상품명을 조회
 
-                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
-                intent.putExtra("barcodeNumber", barcodeNumber);
-                intent.putExtra("prodName", prodName);
-                startActivity(intent);
+                if(prodName != null) {      //상품명 조회에 성공한 경우 상품정보화면으로 이동
+                    Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
+                    intent.putExtra("barcodeNumber", barcodeNumber);
+                    intent.putExtra("prodName", prodName);
+                    startActivity(intent);
+                }
+                else        //상품명이 조회되지 않으면 (ex. 코리안넷에 등록되지 않은 경우)
+                    Toast.makeText(getApplicationContext(), "코리안넷에 등록되지 않은 상품입니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
