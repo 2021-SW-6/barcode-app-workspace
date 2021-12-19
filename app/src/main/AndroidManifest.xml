@@ -14,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Barcode_Scanner"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GoodsInfoActivity"
-            android:label="GoodsActivity"></activity>
         <activity android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
@@ -28,7 +26,7 @@
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".NaverApiActivity"
-            android:label="NaverApiActivity"></activity>
+        <activity android:name=".ProductInfoActivity"
+            android:label="ProductInfoActivity"></activity>
     </application>
 </manifest>
