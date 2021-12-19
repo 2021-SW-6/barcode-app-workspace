@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("바코드 스캐너");
+
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
@@ -74,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
         builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {    //상품검색을 진행할지 다시 스캔할지 묻는 Dialog
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                GoodsInfoActivity goodsInfoActivity = new GoodsInfoActivity();
+                CrawlingProductName crawlingProductName = new CrawlingProductName();
                 String prodName;
 
-                prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);   //바코드 번호로 상품명을 조회
+                prodName = crawlingProductName.inquireGoodsInfo(barcodeNumber);   //바코드 번호로 상품명을 조회
 
                 if(prodName != null) {      //상품명 조회에 성공한 경우 상품정보화면으로 이동
-                    Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
                     intent.putExtra("barcodeNumber", barcodeNumber);
                     intent.putExtra("prodName", prodName);
                     startActivity(intent);

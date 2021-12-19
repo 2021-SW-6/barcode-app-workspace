@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 
-public class GoodsInfoActivity {
+public class CrawlingProductName {
     private String prodName = null;    //상품 이름
     boolean isEmpty = true;        //상품 정보를 잘 읽어왔는 지 확인하기 위한 플래그
 
