@@ -67,6 +67,3 @@ public class CrawlingProductName {
         return prodName;    //상품정보 반환
     }
 }
-
-
-
