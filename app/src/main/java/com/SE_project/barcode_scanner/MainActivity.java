@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,108 +29,123 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
-    private final int CAMERA_SCAN = 49374;      //request code 설정
+    private final int CAMERA_SCAN = 49374;      //request code
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("바코드 스캐너");
+
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
 
         ivCamera.setOnClickListener(new View.OnClickListener() {    //카메라 이미지를 눌렀을 때 작동할 기능
             @Override
             public void onClick(View view) {
-                scanCode();
+                scanCodeWithCamera();
             }   //카메라로 바코드 스캔
         });
 
         ivGallery.setOnClickListener(new View.OnClickListener() {   //갤러리 이미지를 눌렀을 때 작동할 기능
             @Override
-            public void onClick(View view) {        //갤러리에 있는 이미지에서 바코드 스캔
-                Intent pickIntent = new Intent(Intent.ACTION_PICK);
-                pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(pickIntent, GET_GALLERY_IMAGE);
-            }
-        });
-
-        Button btnApiTest = (Button)findViewById(R.id.btnApiTest);  //네이버 api를 테스트하기 위한 버튼
-        btnApiTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
-                startActivity(intent);
-            }
+            public void onClick(View view) { scanCodeWithGallery(); }   //갤러리에 있는 이미지에서 바코드 스캔
         });
     }
 
-    private void scanCode() {
+    /**
+     * 카메라로 바코드를 인식하기 위한 method
+     */
+    private void scanCodeWithCamera() {
         IntentIntegrator integrator = new IntentIntegrator (this);
-        integrator.setCaptureActivity(CaptureAct.class);
+        integrator.setCaptureActivity(CaptureAct.class);        //카메라로 바코드를 인식하기 위한 클래스 지정
         integrator.setOrientationLocked(false);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);   //모든 종류의 바코드를 인식 가능하도록 지정
         integrator.setPrompt("Scanning Code");
         integrator.initiateScan();
     }
 
+    /**
+     * 갤러리의 사진에서 바코드를 인식하기 위한 method
+     */
+    private void scanCodeWithGallery(){
+        Intent pickIntent = new Intent(Intent.ACTION_PICK);
+        pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        startActivityForResult(pickIntent, GET_GALLERY_IMAGE);      //사진을 가져오기 위해 갤러리 열기
+    }
+
+    /**
+     * 상품검색을 진행할지 다시 스캔할지 묻는 Dialog를 띄우는 metohd
+     * @param barcodeNumber
+     * @param requestCode
+     */
     private void sendMessage(String barcodeNumber, int requestCode){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(barcodeNumber);
-        builder.setTitle("Scanning Result");
+        builder.setTitle("Barcode Scan Result");
 
-        builder.setNeutralButton("상품검색", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("상품 검색", new DialogInterface.OnClickListener() {   //상품 검색 선택
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                GoodsInfoActivity goodsInfoActivity = new GoodsInfoActivity();
+                CrawlingProductName crawlingProductName = CrawlingProductName.getInstance();    //Design Pattern(Creational) : Singleton Pattern
                 String prodName;
 
-                prodName = goodsInfoActivity.inquireGoodsInfo(barcodeNumber);
+                prodName = crawlingProductName.inquireGoodsInfo(barcodeNumber);   //바코드 번호로 상품명을 조회
 
-                Intent intent = new Intent(getApplicationContext(), NaverApiActivity.class);
-                intent.putExtra("barcodeNumber", barcodeNumber);
-                intent.putExtra("prodName", prodName);
-                startActivity(intent);
+                if(prodName != null) {      //상품명 조회에 성공한 경우
+                    Intent prodInfoIntent = new Intent(getApplicationContext(), ProductInfoActivity.class);
+                    prodInfoIntent.putExtra("barcodeNumber", barcodeNumber);
+                    prodInfoIntent.putExtra("prodName", prodName);              //intent에 상품정보 싣기
+                    startActivity(prodInfoIntent);      //상품정보화면으로 이동
+                }
+                else        //상품명이 조회되지 않으면 (ex. 코리안넷에 등록되지 않은 경우)
+                    Toast.makeText(getApplicationContext(), "코리안넷에 등록되지 않은 상품입니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        if(requestCode == GET_GALLERY_IMAGE) {
-            builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {
+        if(requestCode == GET_GALLERY_IMAGE) {      //scanCodeWithGallery()를 진행했던 경우
+            builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {     //재스캔을 원하면
                 @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                }
+                public void onClick(DialogInterface dialogInterface, int i) { scanCodeWithGallery(); }  //갤러리 화면으로 복귀
             });
         }
-        else if(requestCode == CAMERA_SCAN){
-            builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {
+        else if(requestCode == CAMERA_SCAN){    //scanCodeWithCamera()를 진행했던 경우
+            builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {     //재스캔을 원하면
                 @Override
-                public void onClick(DialogInterface dialogInterface, int i) { scanCode(); }
+                public void onClick(DialogInterface dialogInterface, int i) { scanCodeWithCamera(); }   //카메라 스캔 화면으로 복귀
             });
         }
+
         AlertDialog dialog = builder.create();
-        dialog.show();
+        dialog.show();      //Show dialog
     }
 
+    /**
+     * 갤러리 및 카메라에서 얻은 결과를 돌려주는 method
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult (int requestCode , int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //barcode_scan via gallery
+        //barcode_scan via gallery  * Reference : https://stackoverflow.com/questions/29649673/scan-barcode-from-an-image-in-gallery-android
         if(requestCode == GET_GALLERY_IMAGE){
-            if(data == null || data.getData()==null) {
-                Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");
+            if(data == null || data.getData()==null) {      //데이터가 null인 경우 (유저가 이미지 선택 프로세스를 취소했을 가능성 농후)
+                Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");    //에러 로그 출력
                 return;
             }
-            Uri uri = data.getData();
+            Uri uri = data.getData();   //데이터를 Uri로
 
             try
             {
-                InputStream inputStream = getContentResolver().openInputStream(uri);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                InputStream inputStream = getContentResolver().openInputStream(uri);    //uri를 통해 이미지를 받음
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);    //이미지를 비트맵으로 변환
 
                 if (bitmap == null)
                 {
-                    Log.e("TAG", "uri is not a bitmap," + uri.toString());
+                    Log.e("TAG", "uri is not a bitmap," + uri.toString());      //에러 로그 출력 : 비트맵이 uri가 아님
                     Toast.makeText(getApplicationContext(), "잘못된 이미지입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -139,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
                 int[] pixels = new int[width * height];
 
                 bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-                bitmap.recycle();
-                bitmap = null;
+                bitmap.recycle();       //메모리 누수 방지
+                bitmap = null;          //메모리 누수 방지
 
                 RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
                 BinaryBitmap bBitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -148,18 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
                 try
                 {
-                    Result result = reader.decode(bBitmap);
-                    sendMessage(result.getText(), requestCode);
+                    Result result = reader.decode(bBitmap);     //바코드 인식
+                    sendMessage(result.getText(), requestCode);     //바코드 인식 결과 (바코드번호)를 얻고 Dialog 띄움
                 }
-                catch (NotFoundException e)
+                catch (NotFoundException e)     //바코드 인식 실패
                 {
-                    Log.e("TAG", "decode exception", e);
                     Toast.makeText(getApplicationContext(), "바코드를 인식하지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
             catch (FileNotFoundException e)
             {
-                Log.e("TAG", "can not open file" + uri.toString(), e);
                 Toast.makeText(getApplicationContext(), "파일을 열 수 없습니다.", Toast.LENGTH_SHORT).show();
             }
         }
@@ -168,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
         else if(requestCode == CAMERA_SCAN){
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if (result != null) {
-                if (result.getContents() != null) {
-                    sendMessage(result.getContents(), requestCode);
+                if (result.getContents() != null) {     //정상적으로 인식되면
+                    sendMessage(result.getContents(), requestCode);     //바코드 인식 결과 (바코드번호)를 얻고 Dialog 띄움
                 }
             }
         }
