@@ -184,5 +184,5 @@ public class ProductInfoActivity extends AppCompatActivity {
 
         tableLayout.addView(tableRow);
     }
-
+//.
 }
