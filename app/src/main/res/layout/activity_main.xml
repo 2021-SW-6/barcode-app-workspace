@@ -4,18 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/camera"
-        android:id="@+id/ivCamera"
-        />
-    <ImageView
+        android:gravity="center"
+        android:background="#A0BEC1"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/scanviacamera"
+            android:id="@+id/ivCamera"
+            />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/gallery"
-        android:id="@+id/ivGallery"
-        />
+        android:gravity="center"
+        android:background="#B1C995"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/scanviagallery"
+            android:id="@+id/ivGallery"
+            />
+    </LinearLayout>
 </LinearLayout>
