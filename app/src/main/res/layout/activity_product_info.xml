@@ -65,7 +65,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="상품"
+                    android:text="가격"
                     android:textColor="#3333CC"
                     android:textSize="25sp"
                     android:gravity="center"
