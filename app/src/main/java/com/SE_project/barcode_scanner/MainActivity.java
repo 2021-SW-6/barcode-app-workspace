@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("바코드 스캐너");
+        setTitle("바코디");
 
         ImageView ivCamera = findViewById(R.id.ivCamera);
         ImageView ivGallery = findViewById(R.id.ivGallery);
