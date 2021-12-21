@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,14 +141,19 @@ public class ProductInfoActivity extends AppCompatActivity {
         String getTitle = (String) jsonObject.get("title");
         String getPrice = (String) jsonObject.get("lprice");
         String getLink = (String) jsonObject.get("link");
-
+        Log.v("getLink",getLink);
+        //상품명에 포함된 html 요소들을 제거하기위해 replace함수적용
         String titleFilter = getTitle.replaceAll("<b>", "");
         String title = titleFilter.replaceAll("</b>", "");
 
+        //상품명의 길이조정
         if(title.length()>25) {
             String strnew = title.substring(0,25);
             title = strnew.trim() + "...";
         }
+        //mobile 버전으로 바꾸기 위해 replace함수적용으로 url link내용 변경
+        String linkFilter = getLink.replaceFirst("search", "msearch");
+        String link = linkFilter.replaceAll("gate.nhn[?]id=","product/");
 
         TableLayout tableLayout = (TableLayout)findViewById(R.id.myTableLayout);
 
@@ -173,10 +179,10 @@ public class ProductInfoActivity extends AppCompatActivity {
         btnLink.setText("이동");
         btnLink.setGravity(Gravity.CENTER);
 
-        btnLink.setOnClickListener(new View.OnClickListener() {     // 연결
+        btnLink.setOnClickListener(new View.OnClickListener() {     // 쇼핑 링크 버튼 리스너
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getLink));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                 startActivity(intent);
             }
         });
