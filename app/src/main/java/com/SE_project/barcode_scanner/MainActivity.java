@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 상품검색을 진행할지 다시 스캔할지 묻는 Dialog를 띄우는 metohd
+     * 상품검색을 진행할지 다시 스캔할지 묻는 Dialog를 띄우는 method
      * @param barcodeNumber
      * @param requestCode
      */
@@ -186,5 +186,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }
