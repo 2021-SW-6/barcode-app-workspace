@@ -147,8 +147,8 @@ public class ProductInfoActivity extends AppCompatActivity {
         String title = titleFilter.replaceAll("</b>", "");
 
         //상품명의 길이조정
-        if(title.length()>25) {
-            String strnew = title.substring(0,25);
+        if(title.length()>20) {
+            String strnew = title.substring(0,20);
             title = strnew.trim() + "...";
         }
         //mobile 버전으로 바꾸기 위해 replace함수적용으로 url link내용 변경
