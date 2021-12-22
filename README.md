@@ -6,4 +6,5 @@
 
 
 # Screenshot
-![barcode_readme_process_pictures drawio](https://user-images.githubusercontent.com/59651691/146931534-c4d23d5b-36e6-4e6f-8598-3ada6c86411f.png)
+
+![barcode_readme_process_pictures drawio (1)](https://user-images.githubusercontent.com/59651691/147097684-b496ca18-d13e-4214-a622-bb0f774e5670.png)
