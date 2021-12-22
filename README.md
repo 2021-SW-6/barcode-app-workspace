@@ -7,7 +7,7 @@
 
 # Screenshot
 
-![barcode_readme_process_pictures drawio (1)](https://user-images.githubusercontent.com/59651691/147097684-b496ca18-d13e-4214-a622-bb0f774e5670.png)
+![barcode_readme_process_pictures drawio (2)](https://user-images.githubusercontent.com/59651691/147145886-dc39b5de-bafe-47a3-af56-7e2de28fcb70.png)
 
 
 # Jira Issue Tracking
