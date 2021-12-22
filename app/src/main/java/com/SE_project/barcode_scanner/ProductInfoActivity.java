@@ -49,15 +49,15 @@ public class ProductInfoActivity extends AppCompatActivity {
         tvProductName = findViewById(R.id.tvProductName);
 
         Intent intent = getIntent();
-        String barcodeNumber = intent.getStringExtra("barcodeNumber");
-        String prodName = intent.getStringExtra("prodName");
+        String barcodeNumber = intent.getStringExtra("barcodeNumber");      //바코드 인식넘버 넘겨받기
+        String prodName = intent.getStringExtra("prodName");                //Koreannet에서 Crawling한 상품명 넘겨받기
 
         tvBarcodeNumber.setText("바코드 번호 : " + barcodeNumber);
         tvProductName.setText("상품명 : " + prodName);
 
-        naver_api_helper = NaverApiHelper.getInstance();
+        naver_api_helper = NaverApiHelper.getInstance();                        //Naver Open Api 호출출 위해 싱글톤 객체 불러오기
 
-        //sort parameter주면 상품명에 대한 정확도가 떨어지는 것 확인=>안드로이드단에서 정렬하도록 수정
+       //sort parameter주면 상품명에 대한 정확도가 떨어지는 것 확인=>안드로이드단에서 정렬하도록 수정
         try {
             System.out.println("try안");
             String productName = URLEncoder.encode(prodName, "utf-8");
@@ -72,9 +72,9 @@ public class ProductInfoActivity extends AppCompatActivity {
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-            con.setRequestMethod("GET");
-            con.setRequestProperty("X-Naver-Client-Id", naver_api_helper.getClientId());
-            con.setRequestProperty("X-Naver-Client-Secret", naver_api_helper.getClientSecret());
+            con.setRequestMethod("GET");                                                            //Get방식
+            con.setRequestProperty("X-Naver-Client-Id", naver_api_helper.getClientId());            //Naver Open Api를 사용하기 위한 Id setting
+            con.setRequestProperty("X-Naver-Client-Secret", naver_api_helper.getClientSecret());    //Naver Open Api를 사용하기 위한 Password setting
             int responseCode = con.getResponseCode();
 
             BufferedReader br;
@@ -106,20 +106,20 @@ public class ProductInfoActivity extends AppCompatActivity {
                 jsonValues.add(getArray.getJSONObject(i));
             }
 
-            Collections.sort(jsonValues, new Comparator<JSONObject>() {
-                private static final String KEY_NAME = "lprice";
+            Collections.sort(jsonValues, new Comparator<JSONObject>() {             //Collection 자료형 정렬 기능 사용
+                private static final String KEY_NAME = "lprice";                    // Json 정렬 기준=> lprice 가격으로
 
                 @Override
-                public int compare(JSONObject a, JSONObject b) {
+                public int compare(JSONObject a, JSONObject b) {                    //Sort Rule compare Override하여 정의
                     Integer valA = 0;
                     Integer valB = 0;
                     try{
-                        valA = Integer.parseInt((String)(a.get(KEY_NAME)));
-                        valB = Integer.parseInt((String)(b.get(KEY_NAME)));
+                        valA = Integer.parseInt((String)(a.get(KEY_NAME)));         //  Json Object a의 lprice Integer로 casting
+                        valB = Integer.parseInt((String)(b.get(KEY_NAME)));         // Json Object b의 lprice Integer로 casting
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    return valA.compareTo(valB);
+                    return valA.compareTo(valB);                                    // a의 price > b의 price : 1 , 오름차순정렬
                 }
             });
 
@@ -138,9 +138,9 @@ public class ProductInfoActivity extends AppCompatActivity {
     }
 
     public void addTableRow(JSONObject jsonObject , Context context ) throws JSONException {
-        String getTitle = (String) jsonObject.get("title");
-        String getPrice = (String) jsonObject.get("lprice");
-        String getLink = (String) jsonObject.get("link");
+        String getTitle = (String) jsonObject.get("title");                                 //json에서 불러온 title
+        String getPrice = (String) jsonObject.get("lprice");                                //json에서 불러온 lprice
+        String getLink = (String) jsonObject.get("link");                                   //json에서 불러온 구매링크
         Log.v("getLink",getLink);
         //상품명에 포함된 html 요소들을 제거하기위해 replace함수적용
         String titleFilter = getTitle.replaceAll("<b>", "");
@@ -155,9 +155,9 @@ public class ProductInfoActivity extends AppCompatActivity {
         String linkFilter = getLink.replaceFirst("search", "msearch");
         String link = linkFilter.replaceAll("gate.nhn[?]id=","product/");
 
-        TableLayout tableLayout = (TableLayout)findViewById(R.id.myTableLayout);
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.myTableLayout);              //json의 내용들을 TableLayout으로 보여주기위함
 
-        TableRow tableRow = new TableRow(context);
+        TableRow tableRow = new TableRow(context);                                              //addTableRow 될때마다 Table의 Row 한줄씩추가
         tableRow.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
