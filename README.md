@@ -1,15 +1,18 @@
-# Barcode App Architecture
+![barcodi capture](https://user-images.githubusercontent.com/59651691/148809949-3a812c02-4ca1-487a-ac8b-7a4425e4ebc3.JPG)
+# Backend Flow
+![Backend Flow-Page](https://user-images.githubusercontent.com/59651691/148810733-726df208-fef1-4c02-baab-df2796f092f4.jpg)
 
+<br></br>
 
-![README_DRAW_IO drawio (4)](https://user-images.githubusercontent.com/59651691/146826444-c17bea34-1579-4fc1-9794-777fc762205e.png)
-
-
+# How We Collaborate (SW Engineering Group Task)
+![README_DRAW_IO](https://user-images.githubusercontent.com/59651691/148809591-b50b7b32-199a-4612-bc84-045570ea2ffd.jpg)
+<br></br>
 
 # Screenshot
 
 ![barcode_readme_process_pictures drawio (2)](https://user-images.githubusercontent.com/59651691/147145886-dc39b5de-bafe-47a3-af56-7e2de28fcb70.png)
 
-
+<br><br/>
 # Jira Issue Tracking
 
 ![지라1](https://user-images.githubusercontent.com/59651691/147136303-39cc03ad-ecb1-4d9f-9468-be15632f256b.JPG)
